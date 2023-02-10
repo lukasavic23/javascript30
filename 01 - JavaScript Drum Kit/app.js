@@ -1,4 +1,6 @@
-const keys = document.querySelectorAll(".key");
+"use strict";
+
+const keyParent = document.querySelector(".keys");
 
 const playSound = function (e) {
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
@@ -15,9 +17,11 @@ const playSound = function (e) {
 window.addEventListener("keydown", playSound);
 
 const removeClass = function (e) {
-  if (e.propertyName !== "transform") return;
+  const { target } = e;
 
-  this.classList.remove("playing");
+  if (!target.classList.contains("playing")) return;
+
+  target.classList.toggle("playing");
 };
 
-keys.forEach((key) => key.addEventListener("transitionend", removeClass));
+keyParent.addEventListener("transitionend", removeClass);
