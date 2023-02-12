@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS + CSS Clock</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <div class="checkbox-wrapper">
+      <input
+        type="checkbox"
+        class="toggle js-toggle"
+        name="toggle"
+        id="toggle"
+      />
+      <label for="toggle" class="toggle-label">
+        <span class="toggle-btn"></span>
+      </label>
+      <p class="toggle-text js-toggle-text"></p>
+    </div>
+    <div class="clock">
+      <div class="clock-border">
+        <div class="clock-face">
+          <div class="hand hour-hand js-hour"></div>
+          <div class="hand min-hand js-min"></div>
+          <div class="hand second-hand js-second"></div>
+        </div>
+        <span class="tick twelve"></span>
+        <span class="tick three"></span>
+        <span class="tick six"></span>
+        <span class="tick nine"></span>
+        <div class="center-dot"></div>
+      </div>
+    </div>
+  </body>
+</html>

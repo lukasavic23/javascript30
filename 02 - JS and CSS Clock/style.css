@@ -1,0 +1,273 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+
+  min-height: 100vh;
+
+  background-color: white;
+
+  transition: all 200ms ease-in-out;
+}
+
+.clock {
+  position: relative;
+
+  width: 400px;
+  height: 400px;
+
+  background-color: #e6e9ef;
+  border-radius: 50%;
+
+  box-shadow: 19px 25px 92px rgb(166, 180, 200, 0.45),
+    -20px -20px 61px rgb(255, 255, 255, 0.53),
+    13px 14px 12px rgb(166, 180, 200, 0.57);
+}
+
+.clock-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 350px;
+  height: 350px;
+
+  background-color: #eceef3;
+  border-radius: 50%;
+  box-shadow: inset -12px -12px 30px rgb(255, 255, 255, 0.2),
+    inset 7px 7px 8px rgb(166, 180, 200, 0.52),
+    inset 10px 11px 30px rgb(166, 180, 200, 0.71);
+}
+
+.tick {
+  position: absolute;
+
+  display: inline-block;
+
+  width: 5px;
+  height: 14px;
+
+  background-color: rgb(166, 180, 200, 0.57);
+  border-radius: 20px;
+}
+.twelve,
+.six {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.three,
+.nine {
+  top: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.twelve {
+  top: 20px;
+}
+.three {
+  right: 20px;
+}
+.six {
+  bottom: 20px;
+}
+.nine {
+  left: 20px;
+}
+.center-dot {
+  width: 15px;
+  height: 15px;
+
+  background-color: #646e82;
+
+  z-index: 1;
+}
+.center-dot::before {
+  content: "";
+
+  width: 8px;
+  height: 8px;
+
+  background-color: #fd382d;
+
+  z-index: 2;
+}
+.center-dot,
+.center-dot::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+}
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+
+  border-radius: 3px;
+
+  transform: translateX(-50%);
+  transform-origin: bottom;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.hour-hand,
+.min-hand,
+.hour-hand::before,
+.min-hand::before {
+  --background: #646e82;
+  width: 5px;
+
+  background-color: var(--background);
+  border-radius: 3px;
+}
+.hour-hand {
+  height: 25%;
+}
+.hour-hand::before {
+  content: "";
+  position: absolute;
+  bottom: -30%;
+
+  width: 5px;
+  height: 100%;
+}
+.min-hand {
+  height: 35%;
+}
+.min-hand::before {
+  content: "";
+  position: absolute;
+  bottom: -30%;
+
+  width: 5px;
+  height: 100%;
+}
+.second-hand {
+  width: 3px;
+  height: 37%;
+
+  background-color: #fd251e;
+
+  z-index: 2;
+
+  box-shadow: 1px 3px 4px rgb(251, 8, 0, 0.35);
+}
+.second-hand::before {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+
+  width: 3px;
+  height: 100%;
+
+  background-color: #fd251e;
+  box-shadow: 1px 3px 4px rgb(251, 8, 0, 0.35);
+
+  z-index: 2;
+}
+.second-hand::after {
+  content: "";
+  position: absolute;
+  bottom: -45%;
+
+  left: 50%;
+
+  width: 7px;
+  height: 30%;
+
+  background-color: #fd251e;
+  box-shadow: 1px 3px 4px rgb(251, 8, 0, 0.35);
+  border-radius: 20px;
+  transform: translateX(-50%);
+
+  z-index: 2;
+}
+.checkbox-wrapper {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.toggle {
+  position: absolute;
+  right: 50%;
+}
+.toggle-label {
+  position: relative;
+
+  display: flex;
+
+  width: 70px;
+  height: 41px;
+
+  background-color: #363e46;
+  border-radius: 78px;
+
+  cursor: pointer;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  right: initial;
+
+  display: inline-block;
+
+  width: 23px;
+  height: 23px;
+
+  background-color: white;
+  border-radius: 50%;
+
+  transform: translateY(-50%);
+  transition: right 300ms ease-in-out;
+}
+
+.toggle-text {
+  padding-top: 10px;
+
+  color: #363e46;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  text-align: center;
+}
+.toggle:checked + .toggle-label {
+  background-color: white;
+}
+.toggle:checked + .toggle-label .toggle-btn {
+  left: initial;
+  right: 10%;
+
+  background-color: #363e46;
+}
+
+/* Dark mode styles */
+body.dark-bg {
+  background-color: #363e46;
+}
+.dark-clock {
+  background-color: #3e464f;
+  box-shadow: 12px 25px 92px rgba(35, 40, 45, 0.35),
+    -20px -20px 61px rgb(72, 83, 92, 0.25), 13px 14px 12px rgb(35, 40, 45, 0.5);
+}
+.dark-clock-border {
+  background-color: #363e46;
+  box-shadow: inset -12px -12px 30px rgb(72, 83, 92, 0.3),
+    inset 7px 7px 8px rgb(35, 40, 45, 0.25),
+    inset 10px 11px 30px rgb(35, 40, 45, 0.5);
+}
