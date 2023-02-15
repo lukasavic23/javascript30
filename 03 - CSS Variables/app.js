@@ -14,9 +14,9 @@ const handleUpdate = function (e) {
     target.value + suffix
   );
 };
-
-inputsContainer.addEventListener("change", handleUpdate);
-inputsContainer.addEventListener("input", handleUpdate);
+["change", "input"].forEach((event) =>
+  inputsContainer.addEventListener(event, handleUpdate)
+);
 
 const init = function () {
   inputsContainer.childNodes.forEach((child) => {
